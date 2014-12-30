@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Iot::VERSION
   spec.authors       = ["Akito Gyoten"]
   spec.email         = ["akitogyoten@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Development environment for IoT devices generator}
+  spec.description   = %q{IoT gem generate development environment for IoT devices and genarate skelton code for embedded software for IoT devices.}
+  spec.homepage      = "http://corp.strobo.me"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
