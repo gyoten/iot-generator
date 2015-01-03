@@ -2,5 +2,16 @@
 #!/usr/bin/env ruby
 
 require "iot"
+include Iot
 
-p "find me in /bin/iot"
+Command = ARGV[0]
+
+if Command == "--help" || Command == "-h"
+  Iot::help
+elsif Command == "--version" || Command == "-v"
+  puts "Iot generator #{Iot::VERSION}"
+else
+  puts "Unknown command"
+  puts ""
+  Iot::help
+end
