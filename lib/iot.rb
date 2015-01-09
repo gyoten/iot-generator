@@ -1,8 +1,10 @@
 require "iot/version"
 require "iot/help"
+require "iot/install"
 
 module Iot
   extend Iot::Help
+  extend Iot::Install
   
   def showUsage commands
     puts "usage:"
