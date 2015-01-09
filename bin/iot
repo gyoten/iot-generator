@@ -14,6 +14,10 @@ elsif Command == "install"
   Iot.installComponents
 elsif Command == "uninstall"
   Iot.uninstall
+elsif Command == "new"
+  project_path = "#{ARGV[1]}"
+
+  Iot.new project_path
 else
   puts "Unknown command"
   puts ""
