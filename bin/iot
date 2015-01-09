@@ -7,15 +7,15 @@ include Iot
 Command = ARGV[0]
 
 if Command == "--help" || Command == "-h"
-  Iot::help
+  Iot.help
 elsif Command == "--version" || Command == "-v"
   puts "Iot generator #{Iot::VERSION}"
 elsif Command == "install"
-  Iot::installComponents
+  Iot.installComponents
 elsif Command == "uninstall"
-  Iot::uninstall
+  Iot.uninstall
 else
   puts "Unknown command"
   puts ""
-  Iot::help
+  Iot.help
 end
