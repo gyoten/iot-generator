@@ -2,7 +2,7 @@ IOT_HELP = <<-EOS
 Example usage:
   iot install
   iot uninstall
-  iot new
+  iot new app_path
   iot generate
 
 Troubleshooting:
