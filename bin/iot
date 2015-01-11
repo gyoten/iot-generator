@@ -18,6 +18,8 @@ elsif Command == "new"
   project_path = "#{ARGV[1]}"
 
   Iot.new project_path
+elsif Command == "run"
+  Iot.run
 else
   puts "Unknown command"
   puts ""
