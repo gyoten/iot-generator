@@ -20,7 +20,7 @@ module Iot
       end
 
       if File.exist? project_path
-        puts "#{project_path already exists}"
+        puts "#{project_path} already exists"
         return
       end
 
