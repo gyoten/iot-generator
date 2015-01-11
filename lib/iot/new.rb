@@ -7,6 +7,7 @@ require "iot/new/makefile"
 require "iot/new/stservice"
 require "iot/new/stbledevice"
 require "iot/new/stdeviceinfo"
+require "iot/new/bleyaml"
 
 Iot_dir = "iot"
 
@@ -33,6 +34,7 @@ module Iot
       init_files = [
         "Makefile",
         "main.cpp",
+        "ble.yml",
         "#{Iot_dir}/STService.h",
         "#{Iot_dir}/STBLEdevice.h",
         "#{Iot_dir}/STDeviceInfo.h"
@@ -41,6 +43,7 @@ module Iot
       template_files = [
         Template_makefile,
         Template_main,
+        Template_bleyaml,
         Template_stservice,
         Template_stbledevice,
         Template_stdeviceinfo
