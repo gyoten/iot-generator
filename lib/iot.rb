@@ -7,6 +7,7 @@ require "iot/generate"
 require "iot/destroy"
 require "iot/stats"
 require "iot/service"
+require "iot/characteristic"
 
 module Iot
   extend Iot::Help
@@ -17,6 +18,7 @@ module Iot
   extend Iot::Destroy
   extend Iot::Stats
   extend Iot::Service
+  extend Iot::Characteristic
 
   def showUsage commands
     puts "usage:"
