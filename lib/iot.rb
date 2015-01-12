@@ -3,12 +3,14 @@ require "iot/help"
 require "iot/install"
 require "iot/new"
 require "iot/run"
+require "iot/generate"
 
 module Iot
   extend Iot::Help
   extend Iot::Install
   extend Iot::New
   extend Iot::Run
+  extend Iot::Generate
 
   def showUsage commands
     puts "usage:"
