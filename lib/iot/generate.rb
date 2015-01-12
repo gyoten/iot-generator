@@ -109,9 +109,11 @@ module Iot
       services = deviceinfo["services"]
 
       # サービスの名前が重複していないかを確認
-      if service_exist?(services, service_name)
-        puts "#{service_name} already exist"
-        return
+      unless services == nil
+        if service_exist?(services, service_name)
+          puts "#{service_name} already exist"
+          return
+        end
       end
 
       # サービスを追加
@@ -120,6 +122,10 @@ module Iot
         "uuid" => SecureRandom.uuid,
         "chars" => nil
       }
+      if services == nil
+        deviceinfo["services"] = []
+        services = deviceinfo["services"]
+      end
       services << new_service
 
       # YAMLファイルの内容をサービスを追加したものに変更
