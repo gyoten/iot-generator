@@ -46,7 +46,19 @@ elsif Command == "service"
   else
     Iot.service
   end
+elsif Command == "char"
+  option = "#{ARGV[1]}"
+  char_name = "#{ARGV[2]}"
 
+  if option == "--delete" || option == "-d"
+    if char_name.empty?
+      puts "Characteristic name is required."
+    else
+      Iot.destroy("characteristic", char_name)
+    end
+  else
+    Iot.char
+  end
 else
   puts "Unknown command"
   puts ""
