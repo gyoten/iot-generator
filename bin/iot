@@ -59,6 +59,14 @@ elsif Command == "char"
   else
     Iot.char
   end
+elsif Command == "compname"
+  device_name = "#{ARGV[1]}"
+
+  Iot.change_complete_name device_name
+elsif Command == "shortname"
+  device_name = "#{ARGV[1]}"
+
+  Iot.change_short_name device_name
 else
   puts "Unknown command"
   puts ""
