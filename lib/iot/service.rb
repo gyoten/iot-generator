@@ -12,7 +12,7 @@ module Iot
 
       services.each do |service|
         char_count = service["chars"].count
-        puts "#{service["name"]}: has #{char_count} characteristics"
+        puts "#{service["uuid"]}\t#{service["name"]}: has #{char_count} characteristics"
       end
     end
 
