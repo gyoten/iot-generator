@@ -5,6 +5,13 @@ require "iot/bleyamlparser"
 module Iot
   module Run
     def run
+      generate_template_service
+      # puts "building and flashing program..."
+      # cmd = "make"
+      # executeOut, _, _ = *Open3.capture3(cmd)
+    end
+
+    def generate_template_service
       yaml = load_yaml_body
       if yaml.empty?
         puts "No Yaml file"
@@ -112,9 +119,6 @@ module Iot
 
 
       File.write("./iot/STService.h", str)
-      # puts "building and flashing program..."
-      # cmd = "make"
-      # executeOut, _, _ = *Open3.capture3(cmd)
     end
   end
 end
