@@ -32,6 +32,21 @@ elsif Command == "destroy" || Command == "d"
   Iot.destroy(destroy_type, service_name)
 elsif Command == "stats"
   Iot.stats
+elsif Command == "service"
+  option = "#{ARGV[1]}"
+  service_name = "#{ARGV[2]}"
+
+  if option == "--delete" || option == "-d"
+    if service_name.empty?
+      puts "Service name is required."
+    else
+      Iot.destroy("service", service_name)
+    end
+
+  else
+    Iot.service
+  end
+
 else
   puts "Unknown command"
   puts ""
