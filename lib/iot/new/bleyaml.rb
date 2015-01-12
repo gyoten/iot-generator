@@ -8,18 +8,18 @@ deviceinfo:
     localname: 1
     txpower: 127
     interval: 160
-  services:
-    -
-      name: *TODO
-      uuid: *TODO
-      chars:
-        -
-          name: PowerControlChar
-          uuid: 0xff00
-          payload: 0
-          properties:
-            - "read"
-            - "write"
-            - "notify"
-
 EOS
+
+  # services:
+  #   -
+  #     name: *TODO
+  #     uuid: *TODO
+  #     chars:
+  #       -
+  #         name: PowerControlChar
+  #         uuid: 0xff00
+  #         payload: 0
+  #         properties:
+  #           - "read"
+  #           - "write"
+  #           - "notify"
