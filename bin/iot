@@ -22,9 +22,9 @@ elsif Command == "run"
   Iot.run
 elsif Command == "generate" || Command == "g"
   generate_type = "#{ARGV[1]}"
-  service_name = "#{ARGV[2]}"
+  name = "#{ARGV[2]}"
 
-  Iot.generate(generate_type, service_name)
+  Iot.generate(generate_type, name)
 elsif Command == "destroy" || Command == "d"
   destroy_type = "#{ARGV[1]}"
   service_name = "#{ARGV[2]}"
