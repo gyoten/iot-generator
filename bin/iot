@@ -20,13 +20,16 @@ elsif Command == "new"
   Iot.new project_path
 elsif Command == "run"
   Iot.run
-elsif Command == "generate"
+elsif Command == "generate" || Command == "g"
   generate_type = "#{ARGV[1]}"
   service_name = "#{ARGV[2]}"
 
   Iot.generate(generate_type, service_name)
-elsif Command == "destroy"
-  
+elsif Command == "destroy" || Command == "d"
+  destroy_type = "#{ARGV[1]}"
+  service_name = "#{ARGV[2]}"
+
+  Iot.destroy(destroy_type, service_name)
 else
   puts "Unknown command"
   puts ""
