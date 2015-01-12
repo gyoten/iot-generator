@@ -9,17 +9,3 @@ deviceinfo:
     txpower: 127
     interval: 160
 EOS
-
-  # services:
-  #   -
-  #     name: *TODO
-  #     uuid: *TODO
-  #     chars:
-  #       -
-  #         name: PowerControlChar
-  #         uuid: 0xff00
-  #         payload: 0
-  #         properties:
-  #           - "read"
-  #           - "write"
-  #           - "notify"
