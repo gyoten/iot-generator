@@ -5,10 +5,31 @@ require "iot/bleyamlparser"
 module Iot
   module Run
     def run
+      generate_template_deviceinfo
       generate_template_service
-      # puts "building and flashing program..."
-      # cmd = "make"
-      # executeOut, _, _ = *Open3.capture3(cmd)
+
+      puts "building and flashing program..."
+      `make`
+    end
+
+    def generate_template_deviceinfo
+      yaml = load_yaml_body
+      if yaml.empty?
+        puts "No Yaml file"
+        return
+      end
+
+      deviceinfo = yaml["deviceinfo"]
+      complete_name = deviceinfo["name"]
+      short_name = deviceinfo["shortname"]
+      ad_interval = deviceinfo["adpacket"]["interval"]
+      
+      str = ""
+      str << "#define COMP_NAME \"#{complete_name}\"\n"
+      str << "#define SHORT_NAME \"#{short_name}\"\n"
+      str << "#define AD_INTERVAL #{ad_interval}\n"
+
+      File.write("./iot/STDeviceInfo.h", str)
     end
 
     def generate_template_service
