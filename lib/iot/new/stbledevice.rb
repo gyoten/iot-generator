@@ -57,11 +57,19 @@ public:
      * - SHORTENED_LOCAL_NAME
      * - COMPLETE_LOCAL_NAME
      */
-    this->accumulateAdvertisingPayload(
-        GapAdvertisingData::SHORTENED_LOCAL_NAME,
-        (const uint8_t *)SHORT_NAME,
-        sizeof(SHORT_NAME)
-                                     );
+    if (SHORT_FLG) {
+      this->accumulateAdvertisingPayload(
+          GapAdvertisingData::SHORTENED_LOCAL_NAME,
+          (const uint8_t *)SHORT_NAME,
+          sizeof(SHORT_NAME)
+                                         );
+    } else {
+      this->accumulateAdvertisingPayload(
+          GapAdvertisingData::COMPLETE_LOCAL_NAME,
+          (const uint8_t *)COMP_NAME,
+          sizeof(COMP_NAME)
+                                         );
+    }
 
     /**
      * Set advertising Interval
