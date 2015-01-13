@@ -1,0 +1,76 @@
+# -*- coding: utf-8 -*-
+#!/usr/bin/env ruby
+
+require "iot"
+include Iot
+
+Command = ARGV[0]
+
+if Command == "--help" || Command == "-h"
+  Iot.help
+elsif Command == "--version" || Command == "-v"
+  puts "Iot generator #{Iot::VERSION}"
+elsif Command == "install"
+  Iot.installComponents
+elsif Command == "uninstall"
+  Iot.uninstall
+elsif Command == "new"
+  project_path = "#{ARGV[1]}"
+
+  Iot.new project_path
+elsif Command == "run"
+  Iot.run
+elsif Command == "generate" || Command == "g"
+  generate_type = "#{ARGV[1]}"
+  name = "#{ARGV[2]}"
+
+  Iot.generate(generate_type, name)
+elsif Command == "destroy" || Command == "d"
+  destroy_type = "#{ARGV[1]}"
+  service_name = "#{ARGV[2]}"
+
+  Iot.destroy(destroy_type, service_name)
+elsif Command == "stats"
+  Iot.stats
+elsif Command == "service"
+  option = "#{ARGV[1]}"
+  service_name = "#{ARGV[2]}"
+
+  if option == "--delete" || option == "-d"
+    if service_name.empty?
+      puts "Service name is required."
+    else
+      Iot.destroy("service", service_name)
+    end
+
+  else
+    Iot.service
+  end
+elsif Command == "char"
+  option = "#{ARGV[1]}"
+  char_name = "#{ARGV[2]}"
+
+  if option == "--delete" || option == "-d"
+    if char_name.empty?
+      puts "Characteristic name is required."
+    else
+      Iot.destroy("characteristic", char_name)
+    end
+  else
+    Iot.char
+  end
+elsif Command == "compname"
+  device_name = "#{ARGV[1]}"
+
+  Iot.change_complete_name device_name
+elsif Command == "shortname"
+  device_name = "#{ARGV[1]}"
+
+  Iot.change_short_name device_name
+elsif Command == "devicename"
+  Iot.toggle_local_name
+else
+  puts "Unknown command"
+  puts ""
+  Iot.help
+end
