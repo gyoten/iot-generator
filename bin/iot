@@ -69,6 +69,11 @@ elsif Command == "shortname"
   Iot.change_short_name device_name
 elsif Command == "devicename"
   Iot.toggle_local_name
+elsif Command == "mkhex"
+  softdevice_path = "#{ARGV[1]}"
+  projectfile_path = "#{ARGV[2]}"
+
+  Iot.mkhex(softdevice_path, projectfile_path)
 else
   puts "Unknown command"
   puts ""
