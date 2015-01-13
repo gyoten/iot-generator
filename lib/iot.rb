@@ -9,6 +9,7 @@ require "iot/stats"
 require "iot/service"
 require "iot/characteristic"
 require "iot/devicename"
+require "iot/mkhex"
 
 module Iot
   extend Iot::Help
@@ -21,6 +22,7 @@ module Iot
   extend Iot::Service
   extend Iot::Characteristic
   extend Iot::DeviceName
+  extend Iot::Mkhex
 
   def showUsage commands
     puts "usage:"
