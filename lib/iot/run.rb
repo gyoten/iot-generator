@@ -7,9 +7,20 @@ module Iot
     def run
       generate_template_deviceinfo
       generate_template_service
+      generate_ad_packet
 
       puts "building and flashing program..."
       `make`
+    end
+
+    def generate_ad_packet
+      yaml = load_yaml_body
+      if yaml.empty?
+        puts "No Yaml file"
+        return
+      end
+
+      deviceinfo = yaml["deviceinfo"]
     end
 
     def generate_template_deviceinfo
@@ -23,10 +34,12 @@ module Iot
       complete_name = deviceinfo["name"]
       short_name = deviceinfo["shortname"]
       ad_interval = deviceinfo["adpacket"]["interval"]
-      
+      localname_flg = deviceinfo["adpacket"]["localname"]
+
       str = ""
       str << "#define COMP_NAME \"#{complete_name}\"\n"
       str << "#define SHORT_NAME \"#{short_name}\"\n"
+      str << "#define SHORT_FLG #{localname_flg}\n"
       str << "#define AD_INTERVAL #{ad_interval}\n"
 
       File.write("./iot/STDeviceInfo.h", str)

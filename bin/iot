@@ -67,6 +67,8 @@ elsif Command == "shortname"
   device_name = "#{ARGV[1]}"
 
   Iot.change_short_name device_name
+elsif Command == "devicename"
+  Iot.toggle_local_name
 else
   puts "Unknown command"
   puts ""
