@@ -96,7 +96,6 @@ LD      = $(GCC_BIN)arm-none-eabi-gcc
 OBJCOPY = $(GCC_BIN)arm-none-eabi-objcopy
 OBJDUMP = $(GCC_BIN)arm-none-eabi-objdump
 SIZE 	= $(GCC_BIN)arm-none-eabi-size
-SREC_CAT = srec_cat
 
 CPU = -mcpu=cortex-m0 -mthumb
 CC_FLAGS = $(CPU) -c -g -fno-common -fmessage-length=0 -Wall -fno-exceptions -ffunction-sections -fdata-sections -fomit-frame-pointer
@@ -150,7 +149,7 @@ DEPS = $(OBJECTS:.o=.d) $(SYS_OBJECTS:.o=.d)
 -include $(DEPS)
 
 combined.hex: $(PROJECT).hex
-	$(SREC_CAT) $(SOFTDEVICE) -intel $(PROJECT).hex -intel -o combined.hex -intel --line-length=44
+	iot mkhex $(SOFTDEVICE) $(PROJECT).hex
 
 copy: combined.hex
 	sudo mount -u -w -o sync /Volumes/MBED
