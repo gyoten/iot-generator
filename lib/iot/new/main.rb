@@ -21,6 +21,7 @@ void onConnectionCallback(Gap::Handle_t handle, Gap::addr_type_t peerAddrType, c
 
 void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 {
+  ble.startAdvertising();
 }
 
 void onDataWritten(const GattCharacteristicWriteCBParams *params)
