@@ -1,5 +1,6 @@
-require "FileUtils"
 require "open3"
+require "open-uri"
+require "fileutils"
 
 StroboPath = File.expand_path "/usr/local/strobo"
 
@@ -62,9 +63,9 @@ module Iot
         `rm #{ArmGccTarPath}`
       end
 
-      cmd = "wget #{ArmGccLink} -P #{StroboPath}"
-      puts cmd
-      `#{cmd}`
+      puts "installing #{ArmGccLink} ..."
+      output_path = "#{StroboPath}/#{File.basename ArmGccLink}"
+      get_file(ArmGccLink, output_path)
 
       cmd = "tar zxvf #{ ArmGccTarPath } -C #{StroboPath}"
       puts cmd
@@ -74,9 +75,9 @@ module Iot
     end
 
     def get_lib_zip lib_path
-      cmd = "wget #{lib_path} -P #{StroboPath}"
-      puts cmd
-      `#{cmd}`
+      puts "installing #{lib_path} ..."
+      output_path = "#{StroboPath}/#{File.basename lib_path}"
+      get_file(lib_path, output_path)
 
       cmd = []
       cmd << "unzip #{StroboPath}/*.zip -d #{StroboPath}"
@@ -86,6 +87,14 @@ module Iot
       cmd << "mv #{StroboPath}/BLE_API* #{StroboPath}/BLE_API"
       cmd.each do |temp|
         execute_out, _, _ = *Open3.capture3(temp)
+      end
+    end
+
+    def get_file(url, file_path)
+      open( file_path, "wb") do |save_file|
+        open(url, "rb") do |read_file|
+          save_file.write(read_file.read)
+        end
       end
     end
 
