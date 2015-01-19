@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["akitogyoten@gmail.com"]
   spec.summary       = %q{Development environment for IoT devices generator}
   spec.description   = %q{IoT gem generate development environment for IoT devices and genarate skelton code for embedded software for IoT devices.}
-  spec.homepage      = "http://corp.strobo.me"
+  spec.homepage      = "https://github.com/gyoten/iot-generator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
