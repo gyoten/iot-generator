@@ -1,12 +1,5 @@
 Template_main = <<-EOS
-#ifndef INCLUDED_MBED
 #include "mbed.h"
-#endif
-
-#ifndef INCLUDED_BLEDEVICE
-#include "BLEDevice.h"
-#endif
-
 #include "STService.h"
 #include "STBLEDevice.h"
 
